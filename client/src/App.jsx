@@ -21,5 +21,16 @@ function App() {
     </BrowserRouter>
   );
 }
+/**TODO
+ *10. complete sign up page ui
+ *11.complete sign up functionality
+ *12. complete sign in functionality
+ *13. Add redux toolkit
+ *14. Add redux persist
+ *15. Add google OAuth functinlaity
+ *16. Update the header and make the profule page private
+ * 17. Complete profile page ui
+ *
+ */
 
 export default App;
