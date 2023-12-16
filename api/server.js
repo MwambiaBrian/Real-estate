@@ -3,13 +3,13 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 //MongoDb database
 import connectDB from "./config/db.js";
-import userRoutes from "./routes/user.route.js";
+import authRoutes from "./routes/auth.route.js";
 const app = express();
 app.use(express.json());
 dotenv.config();
 connectDB();
 
-app.use("/api/user", userRoutes);
+app.use("/api/user", authRoutes);
 /**
  5. Connect the  database 
  6. create User model
