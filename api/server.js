@@ -22,6 +22,15 @@ app.use("/api/auth", authRoutes);
 8. create a sign up API route
 9. create a sign in API route
 10. Create a middleware  and a function to handle possible errors
+18.Complete image upload functionality
+19. Create Update User API Route
+21. Add delete user functionality
+22. Add Sign Out functionality
+23. Add create listing API route
+27. Create get User Listings  API Route
+30. Create Updating Listing API Route
+35. Create Search API Route
+43. Deploy on render.
  */
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

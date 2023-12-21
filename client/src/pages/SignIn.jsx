@@ -1,124 +1,74 @@
-// import React, { useState } from "react";
-// //import { Button, VStack } from "@chakra-ui/react";
-// //import { FormControl, FormLabel } from "@chakra-ui/react";
-// //import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
-// //import axios from "axios";
-// //import { useHistory } from "react-router-dom";
-
-// const Login = () => {
-//   const [show, setShow] = useState(false);
-
-//   const [email, setEmail] = useState();
-//   const [password, setPassword] = useState();
-//   const [loading, setLoading] = useState();
-//   //const toast = useToast();
-//  // const history = useHistory();
-//   const url = "https://linkup-1uud.onrender.com/api/user/login";
-
-//   const handleClick = () => setShow(!show);
-
-//   const submitHandler = async () => {
-//     setLoading(true);
-//     if (!email || !password) {
-//       toast({
-//         title: "Please fill all the fields.",
-//         status: "warning",
-//         duration: 5000,
-//         isClosable: true,
-//         position: "bottom",
-//       });
-//       setLoading(false);
-//       return;
-//     }
-//     try {
-//       const config = {
-//         headers: {
-//           "Content-type": "application/json",
-//         },
-//       };
-//     -+
-//       // toast({
-//       //   title: "Login was successful.",
-//       //   status: "success",
-//       //   duration: 5000,
-//       //   isClosable: true,
-//       //   position: "bottom",
-//       // });
-//       // localStorage.setItem("userInfo", JSON.stringify(data));
-//       // setLoading(false);
-//       // history.push("/chats");
-//     } catch (error) {
-//       // toast({
-//       //   title: "Error occured",
-//       //   description: error.response.data.message,
-//       //   status: "warning",
-//       //   duration: 5000,
-//       //   isClosable: true,
-//       //   position: "bottom",
-//       // });
-//     }
-//   };
-//   return (
-//     <VStack spacing="5px">
-//       <FormControl id="email" isRequired>
-//         <FormLabel>Email</FormLabel>
-//         <Input
-//           placeholder="Enter Your Email"
-//           value={email}
-//           onChange={(e) => {
-//             setEmail(e.target.value);
-//           }}
-//         />
-//       </FormControl>
-//       <FormControl id="password" isRequired>
-//         <FormLabel>Password</FormLabel>
-//         <InputGroup>
-//           <Input
-//             type={show ? "text" : "password"}
-//             value={password}
-//             placeholder="Enter Your Password"
-//             onChange={(e) => {
-//               setPassword(e.target.value);
-//             }}
-//           />
-//           <InputRightElement width="4.5rem">
-//             <Button h="1.75rem" size="sm" onClick={handleClick}>
-//               {show ? "Hide" : "Show"}
-//             </Button>
-//           </InputRightElement>
-//         </InputGroup>
-//       </FormControl>
-
-//       <Button
-//         colorScheme="blue"
-//         width="100%"
-//         style={{ marginTop: 15 }}
-//         onClick={submitHandler}
-//         isLoading={loading}
-//       >
-//         Login
-//       </Button>
-//       <Button
-//         variant="solid"
-//         colorScheme="red"
-//         width="100%"
-//         style={{ marginTop: 15 }}
-//         onClick={() => {
-//           setEmail("guest@example.com");
-//           setPassword("123456");
-//         }}
-//       >
-//         Get Guest Credentials
-//       </Button>
-//     </VStack>
-//   );
-// };
-
-// export default Login;
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signin() {
-  return <div>Signin</div>;
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(formData);
+    try {
+      setLoading(true);
+      const res = await fetch("http://localhost:5000/api/auth/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        setError(data.message);
+        setLoading(false);
+        return;
+      }
+      setLoading(false);
+
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
+  return (
+    <div className="p-3 max-w-lg mx-auto">
+      <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input
+          type="email"
+          placeholder="email"
+          className="border p-3 rounded-lg"
+          id="email"
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          className="border p-3 rounded-lg"
+          id="password"
+          onChange={handleChange}
+        />
+        <button
+          disabled={loading}
+          type="submit"
+          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
+        >
+          {loading ? "Loading..." : "Sign In"}
+        </button>
+      </form>
+      <div className="flex gap-2 mt-5">
+        <p>Dont have an account?</p>
+        <Link to={"/sign-up"}>
+          <span className="text-blue-700">Sign up</span>
+        </Link>
+      </div>
+      {error && <p className="text-red-500 mt-5">{error}</p>}
+    </div>
+  );
 }
 
 export default Signin;

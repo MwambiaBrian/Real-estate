@@ -40,6 +40,10 @@ const signup = asyncHandler(async (req, res) => {
 const signin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
+  if (!user) {
+    res.status(400);
+    throw new Error("User does not Exist");
+  }
   if (user && (await user.comparePassword(password))) {
     res.json({
       _id: user._id,
@@ -48,6 +52,9 @@ const signin = asyncHandler(async (req, res) => {
       pic: user.pic,
       token: generateToken(user._id),
     });
+  } else {
+    res.status(400);
+    throw new Error("Failed to Sign in the user");
   }
 });
 
