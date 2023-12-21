@@ -11,21 +11,28 @@ function Signup() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    setLoading(true);
-    const res = await fetch("http://localhost:5000/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-    const data = await res.json();
-    console.log(data);
-    if (data.success === false) {
-      return;
-    }
-    setLoading(false);
+    // console.log(formData);
+    try {
+      setLoading(true);
+      const res = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        setError(data.message);
+        setLoading(false);
+        return;
+      }
+      setLoading(false);
 
-    navigate("/sign-in");
+      navigate("/sign-in");
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   };
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -53,10 +60,11 @@ function Signup() {
           onChange={handleChange}
         />
         <button
+          disabled={loading}
           type="submit"
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
-          Sign Up
+          {loading ? "Loading..." : "Sign Up"}
         </button>
       </form>
       <div className="flex gap-2 mt-5">
@@ -65,6 +73,7 @@ function Signup() {
           <span className="text-blue-700">Sign in</span>
         </Link>
       </div>
+      {error && <p className="text-red-500 mt-5">{error}</p>}
     </div>
   );
 }

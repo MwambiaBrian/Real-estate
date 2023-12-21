@@ -8,15 +8,21 @@ const signup = asyncHandler(async (req, res) => {
   }
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
-    res.send(400);
+    res.status(400);
     throw new Error("Please fill all the fields");
   }
-  console.log(email);
+  //console.log(email);
   //check if the user exist
   const userExist = await User.findOne({ email });
   if (userExist) {
     res.status(400);
     throw new Error("User already exist");
+  }
+  const nameUsed = await User.findOne({ username });
+
+  if (nameUsed) {
+    res.status(400);
+    throw new Error("Username already exist");
   }
   const newUser = await User.create({ username, email, password });
   if (newUser) {

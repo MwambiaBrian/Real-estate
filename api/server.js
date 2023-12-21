@@ -15,7 +15,6 @@ connectDB();
 
 app.use("/api/auth", authRoutes);
 
-app.use(errorHandler);
 /**
  5. Connect the  database 
  6. create User model
@@ -28,3 +27,4 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`--> Server listening on port ${PORT} ...`);
 });
+app.use(errorHandler);
