@@ -1,15 +1,21 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 //MongoDb database
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 const app = express();
+
 app.use(express.json());
+app.use(cors());
 dotenv.config();
 connectDB();
 
-app.use("/api/user", authRoutes);
+app.use("/api/auth", authRoutes);
+
+app.use(errorHandler);
 /**
  5. Connect the  database 
  6. create User model

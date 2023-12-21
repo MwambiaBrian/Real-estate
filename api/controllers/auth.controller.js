@@ -11,6 +11,7 @@ const signup = asyncHandler(async (req, res) => {
     res.send(400);
     throw new Error("Please fill all the fields");
   }
+  console.log(email);
   //check if the user exist
   const userExist = await User.findOne({ email });
   if (userExist) {
