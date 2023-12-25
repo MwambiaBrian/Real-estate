@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../config/generateToken.js";
 import User from "../models/user.model.js";
-
+import jwt from "jsonwebtoken";
 const signup = asyncHandler(async (req, res) => {
   if (!req.body) {
     throw new Error("Request body is undefined");
@@ -44,14 +44,23 @@ const signin = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("User does not Exist");
   }
+  const validCredentials = user.comparePassword(password);
+  if (!validCredentials) {
+    res.status(400);
+    throw new Error("Wrong Credentials");
+  }
   if (user && (await user.comparePassword(password))) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      pic: user.pic,
-      token: generateToken(user._id),
-    });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+    res
+      .cookie("access_token", token, { httpOnly: true })
+      .status(200)
+      .json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+      })
+      .send();
   } else {
     res.status(400);
     throw new Error("Failed to Sign in the user");

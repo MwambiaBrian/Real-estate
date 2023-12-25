@@ -9,7 +9,13 @@ import { errorHandler } from "./middlewares/error.middleware.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+    credentials: true,
+  })
+);
 dotenv.config();
 connectDB();
 
