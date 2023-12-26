@@ -42,13 +42,10 @@ const signin = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (!user) {
     res.status(400);
-    throw new Error("User does not Exist");
+    throw new Error("User not found");
   }
   const validCredentials = user.comparePassword(password);
-  if (!validCredentials) {
-    res.status(400);
-    throw new Error("Wrong Credentials");
-  }
+
   if (user && (await user.comparePassword(password))) {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
@@ -63,7 +60,7 @@ const signin = asyncHandler(async (req, res) => {
       .send();
   } else {
     res.status(400);
-    throw new Error("Failed to Sign in the user");
+    throw new Error("Wrong Credentials");
   }
 });
 
