@@ -22,12 +22,12 @@ connectDB();
 app.use("/api/auth", authRoutes);
 
 /**
- 5. Connect the  database 
- 6. create User model
-7.create a test api route(routes)
-8. create a sign up API route
-9. create a sign in API route
-10. Create a middleware  and a function to handle possible errors
+//  5. Connect the  database 
+//  6. create User model
+// 7.create a test api route(routes)
+// 8. create a sign up API route
+// 9. create a sign in API route
+// 10. Create a middleware  and a function to handle possible errors
 18.Complete image upload functionality
 19. Create Update User API Route
 21. Add delete user functionality
