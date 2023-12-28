@@ -1,8 +1,9 @@
-// import express from "express";
-// import { signup } from "../controllers/auth.controller.js";
+import express from "express";
+import { updateUser } from "../controllers/user.controller.js";
+import { verifyToken } from "../middlewares/verifyUser.middleware.js";
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.route("/signup").post(signup);
-// // router.post("/login", authUser);
-// export default router;
+router.post("/update/:id", verifyToken, updateUser);
+
+export default router;

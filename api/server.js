@@ -2,13 +2,16 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 //MongoDb database
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
+import userRoutes from "./routes/user.route.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -20,6 +23,7 @@ dotenv.config();
 connectDB();
 
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 
 /**
 //  5. Connect the  database 
@@ -28,7 +32,6 @@ app.use("/api/auth", authRoutes);
 // 8. create a sign up API route
 // 9. create a sign in API route
 // 10. Create a middleware  and a function to handle possible errors
-18.Complete image upload functionality
 19. Create Update User API Route
 21. Add delete user functionality
 22. Add Sign Out functionality
