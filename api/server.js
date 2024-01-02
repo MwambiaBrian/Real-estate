@@ -32,7 +32,7 @@ app.use("/api/user", userRoutes);
 // 8. create a sign up API route
 // 9. create a sign in API route
 // 10. Create a middleware  and a function to handle possible errors
-19. Create Update User API Route
+// 19. Create Update User API Route
 21. Add delete user functionality
 22. Add Sign Out functionality
 23. Add create listing API route

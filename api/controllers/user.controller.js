@@ -11,7 +11,7 @@ export const updateUser = asyncHandler(async (req, res) => {
     if (req.body.password) {
       req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
-    const user = await User.findById("658d3a2c29ec13f1ad3b6e12");
+    //const user = await User.findById("658d3a2c29ec13f1ad3b6e12");
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
@@ -24,7 +24,7 @@ export const updateUser = asyncHandler(async (req, res) => {
       },
       { new: true }
     );
-    console.log(user);
+    // console.log(user);
     const { password, ...rest } = updatedUser._doc;
     res.status(200).json(rest);
   } catch (error) {

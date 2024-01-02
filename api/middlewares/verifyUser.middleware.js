@@ -2,7 +2,8 @@ import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 export const verifyToken = asyncHandler(async (req, res, next) => {
   const token = req.cookies.access_token;
-  // console.log(token);
+  console.log(req.cookies);
+  console.log(token);
   if (!token) {
     res.status(401);
     throw new Error("Unauthorized!");

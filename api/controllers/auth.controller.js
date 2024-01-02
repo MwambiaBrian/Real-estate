@@ -51,15 +51,14 @@ const signin = asyncHandler(async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
     res
-      .cookie("access_token", token, { httpOnly: true })
+      .cookie("access_token", token, { httpOnly: true, sameSite: "Lax" })
       .status(200)
       .json({
         _id: user._id,
         username: user.username,
         email: user.email,
         avatar: user.avatar,
-      })
-      .send();
+      });
   } else {
     res.status(400);
     throw new Error("Wrong Credentials");
@@ -70,12 +69,15 @@ const google = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-      res.cookie("access_token", token, { httpOnly: true }).status(200).json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        avatar: user.avatar,
-      });
+      res
+        .cookie("access_token", token, { httpOnly: true, sameSite: "Lax" })
+        .status(200)
+        .json({
+          _id: user._id,
+          username: user.username,
+          email: user.email,
+          avatar: user.avatar,
+        });
     } else {
       const generatedPassword =
         Math.random().toString(36).slice(-8) +
