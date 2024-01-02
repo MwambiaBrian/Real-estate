@@ -69,15 +69,15 @@ const google = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-      res
-        .cookie("access_token", token, { httpOnly: true, sameSite: "Lax" })
-        .status(200)
-        .json({
-          _id: user._id,
-          username: user.username,
-          email: user.email,
-          avatar: user.avatar,
-        });
+
+      res.status(200);
+      res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        avatar: user.avatar,
+      });
+      res.cookie("access_token", token, { httpOnly: true, sameSite: "Lax" });
     } else {
       const generatedPassword =
         Math.random().toString(36).slice(-8) +

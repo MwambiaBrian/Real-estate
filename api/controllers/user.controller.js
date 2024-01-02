@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import bcryptjs from "bcryptjs";
 import User from "../models/user.model.js";
+
 export const updateUser = asyncHandler(async (req, res) => {
   if (req.user.id !== req.params.id) {
     res.status(401);
@@ -27,6 +28,21 @@ export const updateUser = asyncHandler(async (req, res) => {
     // console.log(user);
     const { password, ...rest } = updatedUser._doc;
     res.status(200).json(rest);
+  } catch (error) {
+    res.status(400);
+    throw new Error(error);
+  }
+});
+
+export const deleteUser = asyncHandler(async (req, res) => {
+  if (req.user.id !== req.params.id) {
+    res.status(401);
+    throw new Error("You can only delete your own account");
+  }
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.clearCookie("access_token");
+    res.status(200).json("user has been deleted");
   } catch (error) {
     res.status(400);
     throw new Error(error);
