@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 //MongoDb database
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
+import listingRoutes from "./routes/listing.route.js";
 import userRoutes from "./routes/user.route.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 const app = express();
@@ -24,6 +25,7 @@ connectDB();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/listing", listingRoutes);
 
 /**
 //  5. Connect the  database 

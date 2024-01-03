@@ -114,4 +114,4 @@ const signout = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-export { signup, signin, google };
+export { signup, signin, google, signout };
