@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import bcryptjs from "bcryptjs";
 import User from "../models/user.model.js";
+import Listing from "../models/listing.model.js";
 
 export const updateUser = asyncHandler(async (req, res) => {
   if (req.user.id !== req.params.id) {
@@ -46,5 +47,14 @@ export const deleteUser = asyncHandler(async (req, res) => {
   } catch (error) {
     res.status(400);
     throw new Error(error);
+  }
+});
+export const getUserListing = asyncHandler(async (req, res) => {
+  if (req.user.id === req.params.id) {
+    const listings = await Listing.find({ userRef: req.params.id });
+    res.status(201).json(listings);
+  } else {
+    res.status(401);
+    throw new Error("You can only view your own listings");
   }
 });
