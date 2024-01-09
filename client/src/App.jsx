@@ -36,14 +36,14 @@ function App() {
 //  16. Update the header and make the profule page private
 //  17. Complete profile page ui
 //  18. Complete image upload functionality
- 20. Complete user update functionality
- 21. Add Delete User functionality
- 22. Add Sign Out functionality
- 24. Complete create listing page UI
- 25. Complete upload lsiting images functionality
- 26. Complete create listing page functionality
- 28. Complete show user listing page functionality
- 29.Complete delete user listings functionality
+//  20. Complete user update functionality
+//  21. Add Delete User functionality
+//  22. Add Sign Out functionality
+//  24. Complete create listing page UI
+//  25. Complete upload lsiting images functionality
+//  26. Complete create listing page functionality
+//  28. Complete show user listing page functionality
+//  29.Complete delete user listings functionality
  31. Complete update listing functionality
  32. Add Image Slider to the listing page
  33. Complete listing page
