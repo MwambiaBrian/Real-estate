@@ -31,6 +31,7 @@ export default function UpdateListing() {
     parking: false,
     furnished: false,
   });
+
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.listingId;
