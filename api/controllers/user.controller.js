@@ -50,11 +50,30 @@ export const deleteUser = asyncHandler(async (req, res) => {
   }
 });
 export const getUserListing = asyncHandler(async (req, res) => {
-  if (req.user.id === req.params.id) {
-    const listings = await Listing.find({ userRef: req.params.id });
-    res.status(201).json(listings);
-  } else {
-    res.status(401);
-    throw new Error("You can only view your own listings");
+  try {
+    if (req.user.id === req.params.id) {
+      const listings = await Listing.find({ userRef: req.params.id });
+      res.status(201).json(listings);
+    } else {
+      res.status(401);
+      throw new Error("You can only view your own listings");
+    }
+  } catch (error) {
+    res.status(400);
+    throw new Error(error);
+  }
+});
+export const getUser = asyncHandler(async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(404);
+      throw new Error("User not found!");
+    }
+    const { password, ...rest } = user._doc;
+    res.status(200).json(rest);
+  } catch (error) {
+    res.status(400);
+    throw new Error(error);
   }
 });
