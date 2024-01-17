@@ -58,3 +58,42 @@ export const getListing = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+export const getListings = asyncHandler(async (req, res) => {
+  try {
+    const limit = parseInt(req.params.limit) || 9;
+    const startIndex = parseInt(req.params.startIndex) || 0;
+    let offer = req.params.offer;
+    if (offer === undefined || offer === "false") {
+      offer = { $in: [false, true] };
+    }
+    let furnished = req.params.furnished;
+    if (furnished === undefined || furnished === "false") {
+      furnished = { $in: [false, true] };
+    }
+    let parking = req.params.parking;
+    if (parking === undefined || parking === "false") {
+      parking = { $in: [false, true] };
+    }
+    let type = req.params.type;
+    if (type === undefined || type === "all") {
+      type = { $in: ["sale", "rent"] };
+    }
+    const searchTerm = req.params.searchTerm || "";
+    const sort = req.params.sort || "createdAt";
+    const order = req.params.order || "desc";
+    const listings = await Listing.find({
+      name: { $regex: searchTerm, $options: "i" },
+      offer,
+      furnished,
+      parking,
+      type,
+    })
+      .sort({ [sort]: order })
+      .limit(limit)
+      .skip(startIndex);
+    return res.status(200).json(listings);
+  } catch (error) {
+    res.status(400);
+    throw new Error(error);
+  }
+});

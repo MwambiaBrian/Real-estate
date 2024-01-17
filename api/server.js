@@ -39,7 +39,7 @@ app.use("/api/listing", listingRoutes);
 // 22. Add Sign Out functionality
 // 23. Add create listing API route
 // 27. Create get User Listings  API Route
-30. Create Updating Listing API Route
+// 30. Create Updating Listing API Route
 35. Create Search API Route
 43. Deploy on render.
  */
