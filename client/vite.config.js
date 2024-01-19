@@ -10,12 +10,6 @@ const commonConfig = {
   server: {
     host: "localhost",
   },
-  resolve: {
-    alias: {
-      "~": path.resolve(__dirname, "src"),
-    },
-    extensions: ["", ".js", ".jsx", ".tsx"],
-  },
 };
 dns.setDefaultResultOrder("verbatim");
 export default defineConfig(commonConfig);
