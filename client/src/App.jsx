@@ -6,10 +6,11 @@ import Signup from "./pages/SignUp";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
-import PrivateRoute from "./components/privateRoute.jsx";
+
 import CreateListing from "./pages/CreateListing";
 import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
+import PrivateRoute from "./components/privateRoute";
 
 function App() {
   return (
