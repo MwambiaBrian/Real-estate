@@ -10,7 +10,7 @@ import Header from "./components/Header";
 import CreateListing from "./pages/CreateListing";
 import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
-import PrivateRoute from "./components/privateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
