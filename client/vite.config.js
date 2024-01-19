@@ -12,7 +12,7 @@ const commonConfig = {
   },
   resolve: {
     alias: {
-      "~": path.resolve(--dirname, "src"),
+      "~": path.resolve(__dirname, "src"),
     },
     extensions: ["", ".js", ".jsx", ".tsx"],
   },
