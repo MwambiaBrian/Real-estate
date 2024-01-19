@@ -51,10 +51,10 @@ function App() {
 //  26. Complete create listing page functionality
 //  28. Complete show user listing page functionality
 //  29.Complete delete user listings functionality
- 31. Complete update listing functionality
- 32. Add Image Slider to the listing page
- 33. Complete listing page
- 34.Add contact landlord functionality  to the lisiting page
+//  31. Complete update listing functionality
+//  32. Add Image Slider to the listing page
+//  33. Complete listing page
+//  34.Add contact landlord functionality  to the lisiting page
  36. Complete header search form functiionality
  37. Create search page ui
  38.Add OnChange and OnSubmit functionality to the Search Page
