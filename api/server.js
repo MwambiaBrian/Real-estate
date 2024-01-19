@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -26,6 +27,20 @@ connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/listing", listingRoutes);
+//--------------------------Deployment--------------------------
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "client/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Hello from us");
+  });
+}
+
+//--------------------------Deployment---------------------------
 
 /**
 //  5. Connect the  database 
@@ -44,6 +59,7 @@ app.use("/api/listing", listingRoutes);
 43. Deploy on render.
  */
 const PORT = process.env.PORT || 4000;
+
 app.listen(PORT, () => {
   console.log(`--> Server listening on port ${PORT} ...`);
 });
