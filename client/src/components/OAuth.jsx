@@ -14,17 +14,20 @@ export default function OAuth() {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
 
-      const res = await fetch("http://localhost:5000/api/auth/google", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          username: result.user.displayName,
-          email: result.user.email,
-          avatar: result.user.photoURL,
-        }),
-      });
+      const res = await fetch(
+        "https://two0fastestate.onrender.com/api/auth/google",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            username: result.user.displayName,
+            email: result.user.email,
+            avatar: result.user.photoURL,
+          }),
+        }
+      );
       // console.log(res);
       const data = await res.json();
       console.log(data);

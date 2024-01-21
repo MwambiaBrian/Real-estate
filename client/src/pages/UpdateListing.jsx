@@ -36,7 +36,7 @@ export default function UpdateListing() {
     const fetchListing = async () => {
       const listingId = params.listingId;
       const res = await fetch(
-        `http://localhost:5000/api/listing/get/${listingId}`
+        `https://two0fastestate.onrender.com/api/listing/get/${listingId}`
       );
 
       const data = await res.json();

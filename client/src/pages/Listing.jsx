@@ -29,7 +29,7 @@ function Listing() {
       try {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:5000/api/listing/get/${params.listingId}`
+          `https://two0fastestate.onrender.com/api/listing/get/${params.listingId}`
         );
 
         const data = await res.json();

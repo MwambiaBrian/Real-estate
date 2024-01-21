@@ -115,11 +115,14 @@ export default function CreateListing() {
         return setError("Discount price must be lower than regular price");
       setloading(true);
       setError(false);
-      const res = await fetch("http://localhost:5000/api/listing/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, userRef: currentUser._id }),
-      });
+      const res = await fetch(
+        "https://two0fastestate.onrender.com/api/listing/create",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...formData, userRef: currentUser._id }),
+        }
+      );
       const data = await res.json();
 
       setloading(false);

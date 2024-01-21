@@ -70,7 +70,7 @@ function Profile() {
     try {
       dispatch(updateUserStart());
       const res = await fetch(
-        `http://localhost:5000/api/user/update/${currentUser._id}`,
+        `https://two0fastestate.onrender.com/api/user/update/${currentUser._id}`,
         {
           method: "POST",
           headers: {
@@ -94,7 +94,7 @@ function Profile() {
     try {
       dispatch(deleteUserStart());
       const res = await fetch(
-        `http://localhost:5000/api/user/delete/${currentUser._id}`,
+        `https://two0fastestate.onrender.com/api/user/delete/${currentUser._id}`,
         {
           method: "DELETE",
         }
@@ -112,7 +112,9 @@ function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch(`http://localhost:5000/api/auth/signout`);
+      const res = await fetch(
+        `https://two0fastestate.onrender.com/api/auth/signout`
+      );
       const data = await res.json();
       if (data.success === false) {
         dispatch(signOutUserFailure(data.message));
@@ -127,7 +129,7 @@ function Profile() {
     try {
       setShowListingsError(false);
       const res = await fetch(
-        `http://localhost:5000/api/user/listings/${currentUser._id}`
+        `https://two0fastestate.onrender.com/api/user/listings/${currentUser._id}`
       );
       const data = await res.json();
       if (data.success === false) {
@@ -142,7 +144,7 @@ function Profile() {
   const handleDeleteListing = async (listingId) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/listing/delete/${listingId}`,
+        `https://two0fastestate.onrender.com/api/listing/delete/${listingId}`,
         {
           method: "DELETE",
         }
