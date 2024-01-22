@@ -303,7 +303,7 @@ export default function CreateListing() {
               className="p-3 border border-gray-300 rounded-w-full"
               type="file"
               id="images"
-              accept="images/*"
+              accept="image/*"
               multiple
             />
             <button
