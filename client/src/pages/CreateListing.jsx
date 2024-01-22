@@ -312,7 +312,7 @@ export default function CreateListing() {
               onClick={handleImageSubmit}
               className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shodow-lg disabled:opacity-80"
             >
-              {uploading ? "uploading" : "upload"}
+              {uploading ? "uploading..." : "upload"}
             </button>
             <p className="text-red-700 text-sm">
               {imageUploadError && imageUploadError}
