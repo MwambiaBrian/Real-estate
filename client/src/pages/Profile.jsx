@@ -31,7 +31,7 @@ function Profile() {
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
   const dispatch = useDispatch();
-  //console.log(formData);
+  console.log(userListings);
   // console.log(filePerc);
   // console.log(fileUploadError);
   useEffect(() => {
