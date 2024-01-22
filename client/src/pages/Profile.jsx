@@ -247,37 +247,38 @@ function Profile() {
       {userListings && userListings.length > 0 && (
         <div className="flex flex-col gap-4">
           <h1 className="text-center mt-7 text-2xl">Your Listings</h1>
-          {userListings.map((listing) => (
-            <diV
-              key={listing.id}
-              className="border rounded-lg p-3 flex justify-between items-center gap-4"
-            >
-              <Link to={`/lisiting/${listing.id}`}>
-                <img
-                  className="h-16 w-16 object-contain"
-                  src={listing.imageUrls[0]}
-                  alt="listing cover"
-                />
-              </Link>
-              <Link
-                className="text-slate-700 font-semibold flex-1 hover:underline truncate"
-                to={`/lisiting/${listing.id}`}
+          {userListings &&
+            userListings.map((listing) => (
+              <diV
+                key={listing.id}
+                className="border rounded-lg p-3 flex justify-between items-center gap-4"
               >
-                <p>{listing.name}</p>
-              </Link>
-              <div className="flex flex-col items-center">
-                <button
-                  onClick={() => handleDeleteListing(listing._id)}
-                  className="text-red-700 uppercase"
-                >
-                  Delete
-                </button>
-                <Link to={`/update-listing/${listing._id}`}>
-                  <button className="text-green-700 uppercase">Edit</button>
+                <Link to={`/lisiting/${listing.id}`}>
+                  <img
+                    className="h-16 w-16 object-contain"
+                    src={listing.imageUrls[0]}
+                    alt="listing cover"
+                  />
                 </Link>
-              </div>
-            </diV>
-          ))}
+                <Link
+                  className="text-slate-700 font-semibold flex-1 hover:underline truncate"
+                  to={`/lisiting/${listing.id}`}
+                >
+                  <p>{listing.name}</p>
+                </Link>
+                <div className="flex flex-col items-center">
+                  <button
+                    onClick={() => handleDeleteListing(listing._id)}
+                    className="text-red-700 uppercase"
+                  >
+                    Delete
+                  </button>
+                  <Link to={`/update-listing/${listing._id}`}>
+                    <button className="text-green-700 uppercase">Edit</button>
+                  </Link>
+                </div>
+              </diV>
+            ))}
         </div>
       )}
     </div>
