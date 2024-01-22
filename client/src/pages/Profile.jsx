@@ -250,10 +250,10 @@ function Profile() {
           {userListings &&
             userListings.map((listing) => (
               <diV
-                key={listing.id}
+                key={listing._id}
                 className="border rounded-lg p-3 flex justify-between items-center gap-4"
               >
-                <Link to={`/lisiting/${listing.id}`}>
+                <Link to={`/lisiting/${listing._id}`}>
                   <img
                     className="h-16 w-16 object-contain"
                     src={listing.imageUrls[0]}
