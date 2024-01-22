@@ -40,8 +40,7 @@ export default function CreateListing() {
       for (let i = 0; i < files.length; i++) {
         promises.push(storeImage(files[i]));
       }
-      promises
-        .all(promises)
+      Promise.all(promises)
         .then((urls) => {
           setFormData({
             ...formData,
@@ -67,11 +66,7 @@ export default function CreateListing() {
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          // console.log(progress);
-        },
+        (snapshot) => {},
         (error) => {
           reject(error);
         },
