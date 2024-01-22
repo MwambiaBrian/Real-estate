@@ -58,8 +58,8 @@ function App() {
 //  32. Add Image Slider to the listing page
 //  33. Complete listing page
 //  34.Add contact landlord functionality  to the lisiting page
- 36. Complete header search form functiionality
- 37. Create search page ui
+//  36. Complete header search form functiionality
+//  37. Create search page ui
  38.Add OnChange and OnSubmit functionality to the Search Page
  39. Create the Listing Item Component and show Listings
  40. Add Shore more  listings functionality

@@ -14,6 +14,7 @@ import {
   deleteUserSuccess,
   signOutUserFailure,
   signOutUserStart,
+  signOutUserSuccess,
   updateUserFailure,
   updateUserStart,
   updateUserSuccess,
