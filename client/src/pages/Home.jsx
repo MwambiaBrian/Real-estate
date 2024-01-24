@@ -74,13 +74,15 @@ function Home() {
         {offerListings.length > 0 &&
           offerListings.map((listing) => (
             <SwiperSlide key={listing._id}>
-              <div
-                className="h-[550px]"
-                style={{
-                  background: `url(${listing.imageUrls[0]}) center no-repeat`,
-                  backgroundSize: "cover",
-                }}
-              ></div>
+              {listing.imageUrls && listing.imageUrls.length > 0 && (
+                <div
+                  className="h-[550px]"
+                  style={{
+                    background: `url(${listing.imageUrls[0]}) center no-repeat`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+              )}
             </SwiperSlide>
           ))}
       </Swiper>
