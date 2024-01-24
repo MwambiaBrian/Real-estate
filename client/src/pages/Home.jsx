@@ -71,12 +71,10 @@ function Home() {
         </Link>
       </div>
       <Swiper navigation>
-        {offerListings &&
-          offerListings.length > 0 &&
+        {offerListings.length > 0 &&
           offerListings.map((listing) => (
-            <SwiperSlide>
+            <SwiperSlide key={listing._id}>
               <div
-                key={listing._id}
                 className="h-[550px]"
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
@@ -87,7 +85,7 @@ function Home() {
           ))}
       </Swiper>
       <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10">
-        {offerListings && offerListings.length > 0 && (
+        {offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
@@ -109,7 +107,7 @@ function Home() {
             </div>
           </div>
         )}
-        {rentListings && rentListings.length > 0 && (
+        {rentListings.length > 0 && (
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
@@ -131,7 +129,7 @@ function Home() {
             </div>
           </div>
         )}
-        {saleListings && saleListings.length > 0 && (
+        {saleListings.length > 0 && (
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
