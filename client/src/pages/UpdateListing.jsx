@@ -295,7 +295,7 @@ export default function UpdateListing() {
                   type="number"
                   min="0"
                   max="10000000"
-                  id="discountedPrice"
+                  id="discountPrice"
                   required
                   onChange={handleChange}
                   checked={formData.discountPrice}
@@ -321,7 +321,7 @@ export default function UpdateListing() {
               className="p-3 border border-gray-300 rounded-w-full"
               type="file"
               id="images"
-              accept="images/*"
+              accept="image/*"
               multiple
             />
             <button

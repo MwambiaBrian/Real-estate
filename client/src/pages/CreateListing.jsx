@@ -264,7 +264,7 @@ export default function CreateListing() {
               />
               <div className="flex flex-col items-center">
                 <p>Regular Price</p>
-                <span className="text-xs">($ / month)</span>
+                <span className="text-xs">(Ksh/month)</span>
               </div>
             </div>
             {formData.offer && (
@@ -274,14 +274,14 @@ export default function CreateListing() {
                   type="number"
                   min="0"
                   max="10000000"
-                  id="discountedPrice"
+                  id="discountPrice"
                   required
                   onChange={handleChange}
                   checked={formData.discountPrice}
                 />
                 <div className="flex flex-col items-center">
                   <p>Discounted Price</p>
-                  <span className="text-xs">($ / month)</span>
+                  <span className="text-xs">(Ksh/month)</span>
                 </div>
               </div>
             )}
