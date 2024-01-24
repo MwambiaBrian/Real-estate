@@ -101,9 +101,10 @@ function Home() {
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
-              {offerListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
-              ))}
+              {offerListings &&
+                offerListings.map((listing) => (
+                  <ListingItem listing={listing} key={listing._id} />
+                ))}
             </div>
           </div>
         )}
@@ -121,9 +122,10 @@ function Home() {
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
-              {rentListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
-              ))}
+              {rentListings &&
+                rentListings.map((listing) => (
+                  <ListingItem listing={listing} key={listing._id} />
+                ))}
             </div>
           </div>
         )}
@@ -141,9 +143,10 @@ function Home() {
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
-              {saleListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
-              ))}
+              {saleListings &&
+                saleListings.map((listing) => (
+                  <ListingItem listing={listing} key={listing._id} />
+                ))}
             </div>
           </div>
         )}
