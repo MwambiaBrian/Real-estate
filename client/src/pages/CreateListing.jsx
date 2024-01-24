@@ -318,7 +318,7 @@ export default function CreateListing() {
               formData.imageUrls.map((url, index) => (
                 <div
                   key={url}
-                  className="flex justify-between p-3 border items-center"
+                  className="flex flex-col justify-between p-3 border items-center"
                 >
                   <img
                     className="w-20 h-20 object-contain rounded-lg"
