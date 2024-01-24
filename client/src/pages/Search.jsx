@@ -146,7 +146,7 @@ function Search() {
                 checked={setSidebarData.type === "all"}
                 className="w-5"
               />
-              <span>Rent & sale</span>
+              <span>Rent&sale</span>
             </div>
             <div className="flex gap-2">
               <input
