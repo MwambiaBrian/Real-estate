@@ -245,7 +245,7 @@ function Profile() {
         Show Listings
       </button>
       {<p>{showListingsError ? "Error Showing listings" : ""}</p>}
-      {userListings && userListings.length > 0 && (
+      {userListings && (
         <div className="flex flex-col gap-4">
           <h1 className="text-center mt-7 text-2xl">Your Listings</h1>
           {userListings &&
@@ -255,11 +255,11 @@ function Profile() {
                 className="border rounded-lg p-3 flex justify-between items-center gap-4"
               >
                 <Link to={`/listing/${listing._id}`}>
-                  <img
+                  {/* <img
                     className="h-16 w-16 object-contain"
                     src={listing.imageUrls[0]}
                     alt="listing cover"
-                  />
+                  /> */}
                 </Link>
                 <Link
                   className="text-slate-700 font-semibold flex-1 hover:underline truncate"

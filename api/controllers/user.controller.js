@@ -49,7 +49,7 @@ export const deleteUser = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-export const getUserListing = asyncHandler(async (req, res) => {
+export const getUserListings = asyncHandler(async (req, res) => {
   try {
     if (req.user.id === req.params.id) {
       const listings = await Listing.find({ userRef: req.params.id });
