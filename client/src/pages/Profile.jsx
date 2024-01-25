@@ -249,7 +249,6 @@ function Profile() {
         <div className="flex flex-col gap-4">
           <h1 className="text-center mt-7 text-2xl">Your Listings</h1>
           {userListings &&
-            userListings.length > 0 &&
             userListings.map((listing) => (
               <diV
                 key={listing._id}
