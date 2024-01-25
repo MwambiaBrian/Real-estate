@@ -10,7 +10,8 @@ function Home() {
   const [offerListings, setOfferListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
   const [saleListings, setSaleListings] = useState([]);
-
+  console.log("sales from homepage" + saleListings);
+  console.log("offers from homepage" + offerListings);
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
