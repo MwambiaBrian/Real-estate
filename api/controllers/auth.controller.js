@@ -50,15 +50,12 @@ const signin = asyncHandler(async (req, res) => {
   if (user && (await user.comparePassword(password))) {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-    res
-      .cookie("access_token", token, { httpOnly: true, sameSite: "Lax" })
-      .status(200)
-      .json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        avatar: user.avatar,
-      });
+    res.cookie("access_token", token).status(200).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      avatar: user.avatar,
+    });
   } else {
     res.status(400);
     throw new Error("Wrong Credentials");
@@ -77,7 +74,7 @@ const google = asyncHandler(async (req, res) => {
         email: user.email,
         avatar: user.avatar,
       });
-      res.cookie("access_token", token, { httpOnly: true, sameSite: "Lax" });
+      res.cookie("access_token", token);
     } else {
       const generatedPassword =
         Math.random().toString(36).slice(-8) +
@@ -93,7 +90,7 @@ const google = asyncHandler(async (req, res) => {
       });
       await newUser.save();
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
-      res.cookie("access_token", token, { httpOnly: true }).status(200).json({
+      res.cookie("access_token", token).status(200).json({
         _id: newUser._id,
         username: newUser.username,
         email: newUser.email,
