@@ -30,8 +30,8 @@ export default function CreateListing() {
     parking: false,
     furnished: false,
   });
-  console.log(formData.imageUrls);
-  console.log(files);
+  console.log(formData);
+  //console.log(files);
   const handleImageSubmit = () => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
@@ -121,7 +121,7 @@ export default function CreateListing() {
         }
       );
       const data = await res.json();
-
+      console.log(data + "listing ");
       setloading(false);
       if (data.success === false) {
         setError(data.message);
@@ -177,7 +177,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.type === "sale"}
               />
-              <span>Sale</span>
+              <span>Sell</span>
             </div>
 
             <div className="flex gap-2">
@@ -321,8 +321,8 @@ export default function CreateListing() {
                   className="flex justify-between p-3 border items-center"
                 >
                   <img
-                    className="w-20 h-20 object-contain rounded-lg"
                     src={url}
+                    className="w-20 h-20 object-contain rounded-lg"
                     alt="listing image"
                   />
                   <button

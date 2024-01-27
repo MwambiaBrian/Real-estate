@@ -13,13 +13,13 @@ export default function OAuth() {
       const provider = new GoogleAuthProvider();
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
-
+      console.log(result + "OAuth results");
       const res = await fetch(
         "https://two0fastestate.onrender.com/api/auth/google",
         {
           method: "POST",
           headers: {
-            "Content-type": "application/json",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             username: result.user.displayName,
@@ -30,7 +30,7 @@ export default function OAuth() {
       );
       // console.log(res);
       const data = await res.json();
-      console.log(data);
+      //console.log(data);
       disapatch(signInSuccess(data));
       navigate("/");
     } catch (error) {

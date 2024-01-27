@@ -155,9 +155,7 @@ export default function UpdateListing() {
   };
   return (
     <main className="p-3 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">
-        Update Listing
-      </h1>
+      <h1 className="text-3xl font-semibold text-center my-7">Edit Listing</h1>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col gap-4 flex-1">
           <input
@@ -301,8 +299,8 @@ export default function UpdateListing() {
                   checked={formData.discountPrice}
                 />
                 <div className="flex flex-col items-center">
-                  <p>Discounted Price</p>
-                  <span className="text-xs">($ / month)</span>
+                  <p>Discount Price</p>
+                  <span className="text-xs">($/month)</span>
                 </div>
               </div>
             )}
@@ -335,7 +333,8 @@ export default function UpdateListing() {
             <p className="text-red-700 text-sm">
               {imageUploadError && imageUploadError}
             </p>
-            {formData.imageUrls.length > 0 &&
+            {formData.imageUrls &&
+              formData.imageUrls.length > 0 &&
               formData.imageUrls.map((url, index) => (
                 <div
                   key={url}
