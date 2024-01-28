@@ -98,7 +98,7 @@ function Listing() {
               <FaMapMarkerAlt className="text-green-700" />
               {listing.address}
             </p>
-            <div className="">
+            <div className="flex gap-4">
               <p className="bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                 {listing.type === "rent" ? "For rent" : "For sale"}
               </p>
@@ -139,7 +139,7 @@ function Listing() {
             {currentUser && listing.userRef !== currentUser._id && !contact && (
               <button
                 onClick={() => setContact(true)}
-                className="bg-salte-700 text-white rounded-lg uppercase hover:opacity-95"
+                className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95"
               >
                 Contact landlord
               </button>
