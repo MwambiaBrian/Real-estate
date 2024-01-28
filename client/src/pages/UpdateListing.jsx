@@ -143,10 +143,11 @@ export default function UpdateListing() {
       );
       const data = await res.json();
 
-      setloading(false);
       if (data.success === false) {
         setError(data.message);
+        setloading(false);
       }
+      setloading(false);
       navigate(`/listing/${data._id}`);
     } catch (error) {
       setError(error.message);
