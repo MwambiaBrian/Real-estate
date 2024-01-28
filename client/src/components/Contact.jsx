@@ -4,17 +4,18 @@ function Contact({ listing }) {
   const [landlord, setLardlord] = useState(null);
   const [message, setMessage] = useState(null);
   useEffect(() => {
-    try {
-      const fetchLandlord = async () => {
+    const fetchLandlord = async () => {
+      try {
         const res = await fetch(
           `http://localhost:5000/api/user/${listing.userRef}`
         );
         const data = await res.json();
         setLardlord(data);
-      };
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchLandlord();
   }, [listing.userRef]);
   const onChange = (e) => {
