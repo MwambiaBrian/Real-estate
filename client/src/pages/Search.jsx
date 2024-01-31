@@ -60,8 +60,8 @@ function Search() {
         setListings(data);
         setLoading(false);
       };
-      fetchListing();
     }
+    fetchListing();
   }, [location.search]);
 
   const handleChange = (e) => {
