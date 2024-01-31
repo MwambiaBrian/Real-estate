@@ -44,23 +44,23 @@ function Search() {
         sort: sortFromUrl || "created_at",
         order: orderFromUrl || "desc",
       });
-      const fetchListing = async () => {
-        setLoading(true);
-        setShoreMore(false);
-        const searchQuery = urlParams.toString();
-        const res = await fetch(
-          `https://two0fastestate.onrender.com/api/listing/get?${searchQuery}`
-        );
-        const data = res.json();
-        if (data.length > 8) {
-          setShoreMore(true);
-        } else {
-          setShoreMore(false);
-        }
-        setListings(data);
-        setLoading(false);
-      };
     }
+    const fetchListing = async () => {
+      setLoading(true);
+      setShoreMore(false);
+      const searchQuery = urlParams.toString();
+      const res = await fetch(
+        `https://two0fastestate.onrender.com/api/listing/get?${searchQuery}`
+      );
+      const data = res.json();
+      if (data.length > 8) {
+        setShoreMore(true);
+      } else {
+        setShoreMore(false);
+      }
+      setListings(data);
+      setLoading(false);
+    };
     fetchListing();
   }, [location.search]);
 
