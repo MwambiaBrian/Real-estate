@@ -38,7 +38,7 @@ function ListingItem({ listing }) {
             <div className="font-bold text-xs">
               {listing.bathrooms > 1
                 ? `${listing.bathrooms} baths`
-                : `${listing.bathrooms} bed`}
+                : `${listing.bathrooms} bath`}
             </div>
           </div>
         </div>

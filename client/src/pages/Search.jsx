@@ -53,13 +53,13 @@ function Search() {
         `https://two0fastestate.onrender.com/api/listing/get?${searchQuery}`
       );
       const data = res.json();
+      setListings(data);
+      setLoading(false);
       if (data.length > 8) {
         setShoreMore(true);
       } else {
         setShoreMore(false);
       }
-      setListings(data);
-      setLoading(false);
     };
     fetchListing();
   }, [location.search]);
@@ -143,7 +143,7 @@ function Search() {
                 type="checkbox"
                 id="all"
                 onChange={handleChange}
-                checked={setSidebarData.type === "all"}
+                checked={sidebarData.type === "all"}
                 className="w-5"
               />
               <span>Rent&sale</span>
@@ -153,7 +153,7 @@ function Search() {
                 type="checkbox"
                 id="rent"
                 onChange={handleChange}
-                checked={setSidebarData.type === "rent"}
+                checked={sidebarData.type === "rent"}
                 className="w-5"
               />
               <span>Rent</span>
@@ -163,7 +163,7 @@ function Search() {
                 type="checkbox"
                 id="sale"
                 onChange={handleChange}
-                checked={setSidebarData.type === "sale"}
+                checked={sidebarData.type === "sale"}
                 className="w-5"
               />
               <span>Sale</span>
@@ -173,7 +173,7 @@ function Search() {
                 type="checkbox"
                 id="offer"
                 onChange={handleChange}
-                checked={setSidebarData.offer}
+                checked={sidebarData.offer}
                 className="w-5"
               />
               <span>Offer</span>
@@ -186,7 +186,7 @@ function Search() {
                 type="checkbox"
                 id="parking"
                 onChange={handleChange}
-                checked={setSidebarData.parking}
+                checked={sidebarData.parking}
                 className="w-5"
               />
               <span>Parking</span>
@@ -196,7 +196,7 @@ function Search() {
                 type="checkbox"
                 id="furnished"
                 onChange={handleChange}
-                checked={setSidebarData.furnished}
+                checked={sidebarData.furnished}
                 className="w-5"
               />
               <span>Furnished</span>
