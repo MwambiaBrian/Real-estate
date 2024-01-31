@@ -56,8 +56,7 @@ export default function UpdateListing() {
       for (let i = 0; i < files.length; i++) {
         promises.push(storeImage(files[i]));
       }
-      promises
-        .all(promises)
+      Promise.all(promises)
         .then((urls) => {
           setFormData({
             ...formData,
