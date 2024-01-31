@@ -16,6 +16,7 @@ function Search() {
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
   const [showMore, setShoreMore] = useState(false);
+  console(listings);
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
@@ -52,7 +53,7 @@ function Search() {
       const res = await fetch(
         `https://two0fastestate.onrender.com/api/listing/get?${searchQuery}`
       );
-      const data = res.json();
+      const data = await res.json();
       setListings(data);
       setLoading(false);
       if (data.length > 8) {
