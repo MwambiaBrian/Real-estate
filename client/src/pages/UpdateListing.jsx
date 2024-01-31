@@ -133,7 +133,7 @@ export default function UpdateListing() {
       setloading(true);
       setError(false);
       const res = await fetch(
-        `http://localhost:5000/api/listing/update/${params.listingId}`,
+        `https://two0fastestate.onrender.com/api/listing/update/${params.listingId}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -328,7 +328,7 @@ export default function UpdateListing() {
               onClick={handleImageSubmit}
               className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shodow-lg disabled:opacity-80"
             >
-              {uploading ? "uploading" : "upload"}
+              {uploading ? "uploading..." : "upload"}
             </button>
             <p className="text-red-700 text-sm">
               {imageUploadError && imageUploadError}
@@ -359,7 +359,7 @@ export default function UpdateListing() {
             disabled={loading || uploading}
             className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
           >
-            {loading ? "Update" : "Updating Listing..."}
+            {!loading ? "Update" : "Updating Listing..."}
           </button>
           {error && <p className="text-red-700">{error}</p>}
         </div>
