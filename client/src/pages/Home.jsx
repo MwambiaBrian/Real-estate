@@ -60,7 +60,7 @@ function Home() {
           hustle.
         </h1>
         <div className="text-gray-400 text-xs sm:text-sm">
-          Maskani Estate is the perfect place kupata keja yako next.
+          Bayt is the perfect place kupata keja yako next.
           <br />
           We have a wide range of properties for you to choose from.
         </div>
