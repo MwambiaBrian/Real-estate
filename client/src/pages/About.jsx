@@ -7,8 +7,8 @@ function About() {
         About Maskani Estate
       </h1>
       <p className="mb-4 text-slate-700">
-        Maskani Estate is a leading real estate marketplace that specializes in
-        helping clients buy, sell and rent properties in the most desirable
+        Bayt is a leading real estate marketplace that specializes in helping
+        clients buy, sell and rent properties in the most desirable
         neighbourhoods. Our team of experienced agents is dedicated to providing
         excepttional service and making the buying and selling process as smooth
         as possible
